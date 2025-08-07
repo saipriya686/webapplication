@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Quote Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #c3a3f1, #f9c5d1);
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .quote-box {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      color: #fff;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      max-width: 500px;
+      transition: all 0.4s ease;
+    }
+
+    .quote-box h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .quote {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .quote.show {
+      opacity: 1;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      background-color: #fff;
+      color: #6b00b6;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #f9f9f9;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quote-box">
+    <h1>🌸 Daily Quote</h1>
+    <div class="quote" id="quote">Click the button for your quote</div>
+    <button class="btn" onclick="generateQuote()">Show Quote</button>
+  </div>
+
+  <script>
+    const quotes = [
+      "Believe you can and you're halfway there.",
+      "Every day is a fresh start. Shine on!",
+      "You are capable of amazing things.",
+      "Don't watch the clock; do what it does. Keep going.",
+      "The best view comes after the hardest climb.",
+      "Start where you are. Use what you have. Do what you can.",
+      "Be a voice, not an echo.",
+      "Dream big. Work hard. Stay focused."
+    ];
+
+    function generateQuote() {
+      const quoteBox = document.getElementById('quote');
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      quoteBox.classList.remove('show'); // Fade out
+      setTimeout(() => {
+        quoteBox.textContent = quotes[randomIndex];
+        quoteBox.classList.add('show');  // Fade in
+      }, 300);
+    }
+  </s
